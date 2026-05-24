@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir *)",
+      "Bash(npx tsc *)",
+      "mcp__exa__web_fetch_exa",
+      "mcp__exa__web_search_exa",
+      "mcp__Claude_Preview__preview_screenshot",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__Claude_Preview__preview_console_logs",
+      "mcp__ccd_session__mark_chapter",
+      "PowerShell(curl.exe -s http://127.0.0.1:8100/api/flow/status)"
+    ]
+  }
+}

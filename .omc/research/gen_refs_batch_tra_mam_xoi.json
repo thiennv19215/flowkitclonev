@@ -1,0 +1,11 @@
+{
+  "requests": [
+    {"type":"GENERATE_CHARACTER_IMAGE","character_id":"1281620a-54a3-465b-9a65-3ac49bb96383","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e"},
+    {"type":"GENERATE_CHARACTER_IMAGE","character_id":"39e25bfc-52da-4987-aaaf-3941ade33af0","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e"},
+    {"type":"GENERATE_CHARACTER_IMAGE","character_id":"4eeb22ba-89e6-4170-9495-94071be7406c","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e"},
+    {"type":"GENERATE_CHARACTER_IMAGE","character_id":"547b6be8-d626-43af-9c97-1f27a0a69eec","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e"},
+    {"type":"GENERATE_CHARACTER_IMAGE","character_id":"5b848551-3d16-4f52-b13b-5db66b9897df","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e"},
+    {"type":"GENERATE_CHARACTER_IMAGE","character_id":"75de8cc5-aa1f-4fe9-94f5-0150c7a30f5f","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e"},
+    {"type":"GENERATE_CHARACTER_IMAGE","character_id":"8215e840-de93-4690-82d6-cee945e0b03c","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e"}
+  ]
+}

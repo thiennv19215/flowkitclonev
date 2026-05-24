@@ -1,0 +1,14 @@
+{
+  "requests": [
+    {"type":"GENERATE_VIDEO","scene_id":"7d59a511-9bbc-4015-9487-c0e732fc3922","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"baa32ccc-934a-43c6-9dca-894d38d70977","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"5fbbf26e-1d9e-49a5-86b8-e1f5b2465872","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"cdc75cfd-a1a3-4c2a-b9b6-002e0e88486a","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"34781c22-f062-4a77-bf95-e5a4041e30e2","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"22798799-e05a-41f9-85a9-d8cfbc5362a4","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"570618f8-475d-432b-92fe-f89c33a802f9","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"a7ff5efb-585a-4005-99ec-22d9662fd75d","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"1d674b28-cd1a-457f-bc89-ebce9ed2dbbf","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"},
+    {"type":"GENERATE_VIDEO","scene_id":"159b037f-0b55-41b1-ab28-8acb99737e3c","project_id":"696df81a-4708-40e8-a2fd-fc333083ce8e","video_id":"6787bc4f-5baa-42f4-883d-b25dac4f12ad","orientation":"VERTICAL"}
+  ]
+}

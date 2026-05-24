@@ -13,6 +13,7 @@ class GenerateImageRequest(BaseModel):
     aspect_ratio: str = "IMAGE_ASPECT_RATIO_PORTRAIT"
     user_paygate_tier: str = "PAYGATE_TIER_ONE"
     character_media_ids: Optional[list[str]] = None
+    image_model_key: Optional[str] = None
 
 
 class GenerateVideoRequest(BaseModel):
@@ -23,6 +24,7 @@ class GenerateVideoRequest(BaseModel):
     aspect_ratio: str = "VIDEO_ASPECT_RATIO_PORTRAIT"
     end_image_media_id: Optional[str] = None
     user_paygate_tier: str = "PAYGATE_TIER_ONE"
+    video_model_key: Optional[str] = None
 
 
 class GenerateVideoRefsRequest(BaseModel):
@@ -207,3 +209,32 @@ async def upload_image(body: UploadImageRequest):
         raise HTTPException(result.get("status", 502), result.get("error", result.get("data")))
     media_id = result.get("_mediaId")
     return {"media_id": media_id, "raw": result.get("data", result)}
+
+
+class UploadImageBinaryRequest(BaseModel):
+    image_base64: str
+    mime_type: str = "image/jpeg"
+    project_id: str = ""
+    file_name: str = "image.png"
+
+
+@router.post("/upload-image-binary")
+async def upload_image_binary(body: UploadImageBinaryRequest):
+    """Upload an image as base64 (browser-friendly, no absolute file path needed)."""
+    client = get_flow_client()
+    if not client.connected:
+        raise HTTPException(503, "Extension not connected")
+    if not body.image_base64:
+        raise HTTPException(400, "Empty image_base64")
+
+    result = await client.upload_image(
+        body.image_base64,
+        mime_type=body.mime_type,
+        project_id=body.project_id,
+        file_name=body.file_name,
+    )
+    if result.get("error") or (isinstance(result.get("status"), int) and result["status"] >= 400):
+        raise HTTPException(result.get("status", 502), result.get("error", result.get("data")))
+
+    media_id = result.get("_mediaId") or (result.get("data", {}) or {}).get("media", {}).get("name")
+    return {"media_id": media_id, "raw": result}

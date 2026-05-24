@@ -1,0 +1,36 @@
+services:
+  flowkit:
+    build: .
+    image: flowkit:local
+    container_name: flowkit
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8100:8100"
+      - "127.0.0.1:9222:9222"
+    environment:
+      API_HOST: 0.0.0.0
+      API_PORT: 8100
+      WS_HOST: 0.0.0.0
+      WS_PORT: 9222
+      FLOW_AGENT_DIR: /app
+    volumes:
+      - ./agent:/app/agent
+      - ./skills:/app/skills
+      - ./output:/app/output
+      - flowkit_db:/app/_db
+    command: >
+      sh -c "ln -sf /app/_db/flow_agent.db /app/flow_agent.db 2>/dev/null;
+             ln -sf /app/_db/flow_agent.db-wal /app/flow_agent.db-wal 2>/dev/null;
+             ln -sf /app/_db/flow_agent.db-shm /app/flow_agent.db-shm 2>/dev/null;
+             exec python -m agent.main"
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: flowkit-cloudflared
+    restart: unless-stopped
+    depends_on:
+      - flowkit
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+
+volumes:
+  flowkit_db:

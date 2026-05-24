@@ -1,0 +1,102 @@
+[
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 0,
+    "prompt": "A clear glass cup of pink herbal tea sits beside fresh raspberries and dried leaves on a bright kitchen counter. A smartphone nearby shows blurred social media shapes with no readable text. Vertical close-up composition, shallow depth of field, warm morning light.",
+    "video_prompt": "Close-up of a clear glass cup of pink herbal tea steaming gently beside fresh raspberries and dried leaves on a bright kitchen counter. The camera slowly pushes in. Then cut to a soft-focus smartphone beside the cup, showing blurred scrolling shapes with no readable text, suggesting online claims without displaying words. Warm morning light, clean realistic food documentary style.\n\nAudio: soft kitchen ambience, faint cup clink, quiet page scrolling sound.\nSFX: gentle steam hiss, ceramic saucer touch.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Trà mâm xôi đang được khen như một món uống thần kỳ. Nhưng trước khi tin, cần hỏi: đó là trà quả hay trà lá?",
+    "character_names": ["Tea Table", "Raspberry Tea Cup", "Dried Raspberry Leaves"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 1,
+    "prompt": "Health Educator stands at Kitchen Studio counter, calmly placing two plain cups side by side, one with fruit tea and one with dried leaf infusion. Vertical medium shot, face fully visible, clean daylight.",
+    "video_prompt": "Medium vertical shot of Health Educator standing at the Kitchen Studio counter, calmly placing two plain cups side by side: one pink fruit tea and one pale dried leaf infusion. The camera holds steady. Then cut to a closer view of her hands gently separating the cups, showing they are not the same product. Soft daylight, clean realistic educational style, calm professional mood.\n\nAudio: quiet room tone, ceramic cups lightly touching wood.\nSFX: spoon resting on saucer, soft fabric movement.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Tên gọi giống nhau dễ gây nhầm lẫn. Trà vị quả mâm xôi khác với trà lá mâm xôi đỏ.",
+    "character_names": ["Health Educator", "Kitchen Studio", "Raspberry Tea Cup", "Dried Raspberry Leaves"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 2,
+    "prompt": "Fresh raspberries are rinsed in a small glass bowl beside a cup of fruit tea on Tea Table. Macro vertical food shot, droplets sparkling, clean natural light, no labels.",
+    "video_prompt": "Macro vertical shot of fresh raspberries being rinsed in a small glass bowl beside a cup of pink fruit tea on the Tea Table. The camera glides slowly across the fruit surface. Then cut to the cup as light passes through the tea, emphasizing color and freshness without medical claims. Natural daylight, crisp realistic food photography, soft warm tones.\n\nAudio: gentle water movement, quiet kitchen ambience.\nSFX: droplets falling into glass, spoon lightly tapping ceramic.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Quả mâm xôi là thực phẩm có polyphenol. Nhưng một ly trà hương quả không giống hệt việc ăn trái cây tươi.",
+    "character_names": ["Tea Table", "Raspberry Tea Cup"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 3,
+    "prompt": "Dried raspberry leaves are poured from a wooden spoon into a small ceramic bowl on Tea Table. Vertical macro shot, natural textures, soft side light, no labels or text.",
+    "video_prompt": "Macro vertical shot of Dried Raspberry Leaves sliding from a wooden spoon into a small ceramic bowl on the Tea Table. The camera slowly tilts down with the motion. Then cut to hot water being poured into a clear teapot, leaves drifting gently as the infusion begins. Soft side light, natural textures, realistic herbal documentary mood.\n\nAudio: quiet room tone, gentle pouring water.\nSFX: dry leaves rustling, glass teapot settling on wood.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Lá mâm xôi đỏ là thảo dược riêng. Nó thường được nhắc tới trong thai kỳ, nhưng bằng chứng không đủ để thần thánh hóa.",
+    "character_names": ["Tea Table", "Dried Raspberry Leaves"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 4,
+    "prompt": "Health Educator sits at Clinic Desk, reviewing blank Fact Check Cards with a pen, thoughtful and calm. Vertical medium shot, face fully visible, soft clinical daylight, no readable text.",
+    "video_prompt": "Medium vertical shot of Health Educator sitting at the Clinic Desk, reviewing blank Fact Check Cards with a pen, thoughtful and calm. The camera slowly dollies in. Then cut to her placing one card aside and pausing before writing, showing careful evaluation rather than certainty. Soft clinical daylight, neutral colors, realistic health education tone.\n\nAudio: quiet clinic ambience, soft paper movement.\nSFX: pen cap click, card sliding on desk.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Một số lời đồn nói trà này giúp chuyển dạ dễ hơn. Với sức khỏe thai kỳ, lời đồn không thể thay tư vấn y tế.",
+    "character_names": ["Health Educator", "Clinic Desk", "Fact Check Cards"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 5,
+    "prompt": "A calm consultation setup at Clinic Desk shows a notebook, pen, and a cup of herbal tea placed to the side, with no people visible. Vertical close-up, safe healthcare atmosphere, no labels.",
+    "video_prompt": "Close-up vertical shot of the Clinic Desk with a notebook, pen, and a cup of herbal tea placed to the side, no people visible. The camera slowly pans from the tea toward the notebook, suggesting a conversation with a professional. Then cut to a wider still composition of the calm desk and soft daylight wall. Clean healthcare atmosphere, reassuring and careful.\n\nAudio: quiet clinic ambience, distant soft footsteps outside the room.\nSFX: pen placed gently on paper, cup settling on saucer.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Nếu đang mang thai, có bệnh nền, hoặc dùng thuốc, hãy hỏi bác sĩ trước khi dùng trà lá mâm xôi đỏ.",
+    "character_names": ["Clinic Desk", "Raspberry Tea Cup"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 6,
+    "prompt": "Health Educator at Kitchen Studio gently moves a sugar bowl away from the tea cup and replaces it with fresh raspberries. Vertical medium shot, face fully visible, warm daylight.",
+    "video_prompt": "Medium vertical shot of Health Educator at the Kitchen Studio gently moving a sugar bowl away from the tea cup and replacing it with fresh raspberries. The camera tracks the movement across the counter. Then cut to her nodding calmly toward the cup, presenting it as a simple beverage choice rather than a cure. Warm daylight, clean realistic lifestyle health style.\n\nAudio: soft kitchen ambience, calm gentle movement.\nSFX: small bowl sliding on wood, cup clink.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Lợi ích thực tế nhất có thể rất đơn giản: một đồ uống ít đường, dễ chịu, nếu bạn chọn loại phù hợp.",
+    "character_names": ["Health Educator", "Kitchen Studio", "Raspberry Tea Cup"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 7,
+    "prompt": "Fact Check Cards are arranged into two neat piles on Tea Table, one beside fresh raspberries and one beside dried leaves, with no readable text. Vertical overhead shot, clean composition.",
+    "video_prompt": "Overhead vertical shot of blank Fact Check Cards arranged into two neat piles on the Tea Table, one beside fresh raspberries and one beside Dried Raspberry Leaves. The camera slowly rotates a few degrees. Then cut to a close-up of the two piles separated by a clear gap, visually reinforcing the difference between fruit tea and leaf infusion. Soft daylight, tidy documentary composition.\n\nAudio: quiet tabletop ambience, soft paper movement.\nSFX: cards tapping lightly, dried leaves rustling.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Cách an toàn là tách rõ hai thứ: trà vị quả để thưởng thức, trà lá là thảo dược cần thận trọng.",
+    "character_names": ["Tea Table", "Dried Raspberry Leaves", "Fact Check Cards", "Raspberry Tea Cup"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 8,
+    "prompt": "Health Educator stands beside Kitchen Studio counter, holding a cup of tea with both hands and speaking calmly toward camera. Vertical medium close-up, full face visible, warm soft light.",
+    "video_prompt": "Medium close-up vertical shot of Health Educator standing beside the Kitchen Studio counter, holding a cup of tea with both hands and speaking calmly toward camera. The camera slowly pushes in. Then cut to a gentle side angle as she sets the cup down, leaving the tea as a normal daily drink, not a medical promise. Warm soft light, realistic reassuring health educator tone.\n\nAudio: calm Vietnamese female voice, quiet kitchen ambience.\nSFX: cup placed softly on saucer.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Uống được không? Có thể, với nhiều người. Nhưng đừng gọi nó là thuốc, và đừng dùng thay lời khuyên chuyên môn.",
+    "character_names": ["Health Educator", "Kitchen Studio", "Raspberry Tea Cup"],
+    "chain_type": "ROOT"
+  },
+  {
+    "video_id": "6787bc4f-5baa-42f4-883d-b25dac4f12ad",
+    "display_order": 9,
+    "prompt": "A final clean tabletop composition shows Raspberry Tea Cup, fresh raspberries, dried leaves, and blank Fact Check Cards arranged neatly in warm daylight. Vertical hero shot, no readable text.",
+    "video_prompt": "Final vertical hero shot of the Raspberry Tea Cup, fresh raspberries, Dried Raspberry Leaves, and blank Fact Check Cards arranged neatly on the Tea Table in warm daylight. The camera slowly pulls back. Then cut to a still balanced composition with the cup centered and the leaves placed to one side, leaving a calm thoughtful ending. Realistic clean health documentary style.\n\nAudio: soft kitchen ambience, gentle warm music bed.\nSFX: faint ceramic clink, quiet room tone.\nNegative: subtitles, watermark, text overlay.",
+    "transition_prompt": "",
+    "narrator_text": "Kết luận ngắn gọn: trà mâm xôi không xấu, nhưng cũng không thần kỳ. Hiểu đúng trước khi uống.",
+    "character_names": ["Tea Table", "Raspberry Tea Cup", "Dried Raspberry Leaves", "Fact Check Cards"],
+    "chain_type": "ROOT"
+  }
+]

@@ -64,6 +64,9 @@ function broadcastRequestLog() {
 
 chrome.runtime.onInstalled.addListener(init);
 chrome.runtime.onStartup.addListener(init);
+chrome.tabs.onRemoved.addListener((tabId) => {
+  if (tabId === _flowWorkerTabId) _flowWorkerTabId = null;
+});
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name === 'reconnect') connectToAgent();
   if (alarm.name === 'keepAlive') keepAlive();
@@ -110,46 +113,116 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   ['requestHeaders', 'extraHeaders'],
 );
 
-let _openingFlowTab = false;
+const FLOW_TAB_URLS = ['https://labs.google/fx/tools/flow*', 'https://labs.google/fx/*/tools/flow*'];
+const FLOW_HOME_URL = 'https://labs.google/fx/tools/flow';
 
-async function captureTokenFromFlowTab() {
-  const tabs = await chrome.tabs.query({
-    url: ['https://labs.google/fx/tools/flow*', 'https://labs.google/fx/*/tools/flow*'],
+let _openingFlowTab = false;
+let _flowWorkerTabId = null;
+
+async function queryFlowTabs() {
+  return await chrome.tabs.query({ url: FLOW_TAB_URLS });
+}
+
+async function getOrOpenFlowTab() {
+  const tabs = await queryFlowTabs();
+  const workerTab = tabs.find((tab) => tab.id === _flowWorkerTabId);
+  if (workerTab) return workerTab;
+
+  const backgroundTab = tabs.find((tab) => !tab.active);
+  if (backgroundTab) {
+    _flowWorkerTabId = backgroundTab.id;
+    return backgroundTab;
+  }
+
+  // Keep the user's visible Flow tab untouched. A background worker tab can be
+  // reloaded safely for captcha/token recovery without disrupting the page.
+  if (tabs.length) {
+    const tab = await chrome.tabs.create({ url: FLOW_HOME_URL, active: false });
+    _flowWorkerTabId = tab.id;
+    await waitForTabReady(tab.id, 15000);
+    await sleep(1000);
+    return tab;
+  }
+
+  if (_openingFlowTab) {
+    await sleep(3000);
+    const retryTabs = await queryFlowTabs();
+    return retryTabs[0] || null;
+  }
+
+  _openingFlowTab = true;
+  try {
+    console.log('[FlowAgent] No Flow tab found — opening one in background');
+    const tab = await chrome.tabs.create({ url: FLOW_HOME_URL, active: false });
+    _flowWorkerTabId = tab.id;
+    await waitForTabReady(tab.id, 15000);
+    await sleep(1000);
+    return tab;
+  } finally {
+    _openingFlowTab = false;
+  }
+}
+
+async function injectContentScript(tabId) {
+  await chrome.scripting.executeScript({
+    target: { tabId },
+    files: ['content.js'],
   });
-  if (!tabs.length) {
-    if (_openingFlowTab) {
-      console.log('[FlowAgent] Flow tab already opening, skipping');
+}
+
+async function reloadFlowTab(tabId, reason) {
+  console.log(`[FlowAgent] Reloading Flow tab to recover ${reason}`);
+  await chrome.tabs.reload(tabId);
+  await waitForTabReady(tabId, 20000);
+  await sleep(1500);
+  await injectContentScript(tabId);
+}
+
+function waitForTabReady(tabId, timeout = 15000) {
+  return new Promise((resolve) => {
+    let done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      chrome.tabs.onUpdated.removeListener(listener);
+      resolve();
+    };
+    const listener = (updatedTabId, changeInfo) => {
+      if (updatedTabId === tabId && changeInfo.status === 'complete') finish();
+    };
+    const timer = setTimeout(finish, timeout);
+    chrome.tabs.onUpdated.addListener(listener);
+    chrome.tabs.get(tabId).then((tab) => {
+      if (tab.status === 'complete') finish();
+    }).catch(finish);
+  });
+}
+
+function isCaptchaBridgeFailure(error) {
+  const msg = String(error || '');
+  return (
+    msg.includes('CAPTCHA_TIMEOUT') ||
+    msg.includes('CONTENT_TIMEOUT') ||
+    msg.includes('grecaptcha not available') ||
+    msg.includes('Receiving end does not exist') ||
+    msg.includes('Could not establish connection')
+  );
+}
+
+async function captureTokenFromFlowTab(options = {}) {
+  const { reload = false } = options;
+  try {
+    const tab = await getOrOpenFlowTab();
+    if (!tab?.id) {
+      console.log('[FlowAgent] Flow tab not ready yet after open');
       return;
     }
-    _openingFlowTab = true;
-    try {
-      console.log('[FlowAgent] No Flow tab found — opening one in background');
-      await chrome.tabs.create({ url: 'https://labs.google/fx/tools/flow', active: false });
-      await sleep(3000);
-      const retryTabs = await chrome.tabs.query({
-        url: ['https://labs.google/fx/tools/flow*', 'https://labs.google/fx/*/tools/flow*'],
-      });
-      if (!retryTabs.length) {
-        console.log('[FlowAgent] Flow tab not ready yet after open');
-        return;
-      }
-      await chrome.scripting.executeScript({
-        target: { tabId: retryTabs[0].id },
-        files: ['content.js'],
-      });
-      console.log('[FlowAgent] Token refresh triggered on newly opened Flow tab');
-    } catch (e) {
-      console.error('[FlowAgent] Token refresh failed after opening tab:', e);
-    } finally {
-      _openingFlowTab = false;
+    if (reload) {
+      await reloadFlowTab(tab.id, 'token refresh');
+    } else {
+      await injectContentScript(tab.id);
     }
-    return;
-  }
-  try {
-    await chrome.scripting.executeScript({
-      target: { tabId: tabs[0].id },
-      files: ['content.js'],
-    });
     console.log('[FlowAgent] Token refresh triggered on Flow tab');
   } catch (e) {
     console.error('[FlowAgent] Token refresh failed:', e);
@@ -175,6 +248,7 @@ function connectToAgent() {
     console.log('[FlowAgent] Connected to agent');
     chrome.alarms.clear('reconnect');
     setState('idle');
+    captureTokenFromFlowTab().catch(() => {});
 
     // Token refresh alarm — 45 min gives buffer before ~60 min expiry
     chrome.alarms.create('token-refresh', { periodInMinutes: 45 });
@@ -284,10 +358,7 @@ async function requestCaptchaFromTab(tabId, requestId, pageAction) {
     if (!shouldInject) throw error;
 
     // Inject content script and retry
-    await chrome.scripting.executeScript({
-      target: { tabId },
-      files: ['content.js'],
-    });
+    await injectContentScript(tabId);
     await sleep(200);
     return await chrome.tabs.sendMessage(tabId, {
       type: 'GET_CAPTCHA',
@@ -297,38 +368,35 @@ async function requestCaptchaFromTab(tabId, requestId, pageAction) {
   }
 }
 
-async function solveCaptcha(requestId, captchaAction) {
-  const tabs = await chrome.tabs.query({
-    url: ['https://labs.google/fx/tools/flow*', 'https://labs.google/fx/*/tools/flow*'],
-  });
+function requestCaptchaWithTimeout(tabId, requestId, captchaAction) {
+  return Promise.race([
+    requestCaptchaFromTab(tabId, requestId, captchaAction),
+    new Promise((_, rej) => setTimeout(() => rej(new Error('CAPTCHA_TIMEOUT')), 30000)),
+  ]);
+}
 
-  if (!tabs.length) {
-    // Auto-open Flow tab and wait briefly before returning error
-    try {
-      await chrome.tabs.create({ url: 'https://labs.google/fx/tools/flow', active: false });
-      await sleep(3000);
-      // Retry tab query after opening
-      const retryTabs = await chrome.tabs.query({
-        url: ['https://labs.google/fx/tools/flow*', 'https://labs.google/fx/*/tools/flow*'],
-      });
-      if (!retryTabs.length) return { error: 'NO_FLOW_TAB' };
-      const resp = await Promise.race([
-        requestCaptchaFromTab(retryTabs[0].id, requestId, captchaAction),
-        new Promise((_, rej) => setTimeout(() => rej(new Error('CAPTCHA_TIMEOUT')), 30000)),
-      ]);
-      return resp;
-    } catch (e) {
-      return { error: e.message || 'NO_FLOW_TAB' };
-    }
+async function solveCaptcha(requestId, captchaAction) {
+  const tab = await getOrOpenFlowTab();
+  if (!tab?.id) {
+    return { error: 'NO_FLOW_TAB' };
   }
 
   try {
-    const resp = await Promise.race([
-      requestCaptchaFromTab(tabs[0].id, requestId, captchaAction),
-      new Promise((_, rej) => setTimeout(() => rej(new Error('CAPTCHA_TIMEOUT')), 30000)),
-    ]);
+    const resp = await requestCaptchaWithTimeout(tab.id, requestId, captchaAction);
+    if (!resp?.token && isCaptchaBridgeFailure(resp?.error)) {
+      await reloadFlowTab(tab.id, resp.error);
+      return await requestCaptchaWithTimeout(tab.id, `${requestId}:reload`, captchaAction);
+    }
     return resp;
   } catch (e) {
+    if (isCaptchaBridgeFailure(e.message)) {
+      try {
+        await reloadFlowTab(tab.id, e.message);
+        return await requestCaptchaWithTimeout(tab.id, `${requestId}:reload`, captchaAction);
+      } catch (retryError) {
+        return { error: retryError.message };
+      }
+    }
     return { error: e.message };
   }
 }
@@ -581,7 +649,7 @@ chrome.runtime.onMessage.addListener((msg, _, reply) => {
   }
 
   if (msg.type === 'REFRESH_TOKEN') {
-    captureTokenFromFlowTab()
+    captureTokenFromFlowTab({ reload: true })
       .then(() => reply({ ok: true }))
       .catch((e) => reply({ error: e.message }));
     return true;

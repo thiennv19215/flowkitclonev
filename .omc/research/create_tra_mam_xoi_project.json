@@ -1,0 +1,44 @@
+{
+  "name": "Tra Mam Xoi Fact Check",
+  "description": "Video giáo dục sức khỏe tiếng Việt, giải thích trà mâm xôi một cách thận trọng và không phóng đại công dụng y khoa.",
+  "story": "Một video fact-check ngắn giải thích vì sao 'trà mâm xôi' dễ gây nhầm lẫn: có thể là trà hương/quả mâm xôi hoặc trà lá mâm xôi đỏ. Nội dung nêu lợi ích thực tế như đồ uống ít đường/không caffeine nếu chọn đúng loại, đồng thời cảnh báo rằng các lời đồn về thai kỳ, chuyển dạ hay công dụng y khoa cần được kiểm chứng và nên hỏi chuyên gia y tế.",
+  "material": "realistic",
+  "characters": [
+    {
+      "name": "Health Educator",
+      "entity_type": "character",
+      "description": "Vietnamese woman in her early 30s with warm professional presence, shoulder-length dark hair, natural makeup, wearing a simple cream blouse and neutral blazer, calm trustworthy expression, clean modern health educator look.",
+      "voice_description": "Calm Vietnamese female narrator, clear and reassuring, speaks at a measured educational pace"
+    },
+    {
+      "name": "Kitchen Studio",
+      "entity_type": "location",
+      "description": "Bright modern kitchen studio with natural window light, light wood counter, white ceramic tiles, small potted herbs, clean educational video setup, warm realistic atmosphere."
+    },
+    {
+      "name": "Tea Table",
+      "entity_type": "location",
+      "description": "Minimal tabletop set with a glass teapot, transparent cup, raspberry-colored herbal tea, fresh raspberries, dried leaves in a small bowl, soft daylight, clean health documentary style."
+    },
+    {
+      "name": "Clinic Desk",
+      "entity_type": "location",
+      "description": "Clean consultation desk in a modern clinic, notebook, pen, neutral wall, soft daylight, calm safe healthcare atmosphere, no patients visible."
+    },
+    {
+      "name": "Raspberry Tea Cup",
+      "entity_type": "visual_asset",
+      "description": "Clear glass cup filled with deep pink raspberry herbal tea, gentle steam, saucer, realistic fresh raspberries nearby, no label, no text."
+    },
+    {
+      "name": "Dried Raspberry Leaves",
+      "entity_type": "visual_asset",
+      "description": "Small ceramic bowl of dried raspberry leaves beside a wooden spoon, natural texture, clean macro food photography style, no label, no text."
+    },
+    {
+      "name": "Fact Check Cards",
+      "entity_type": "visual_asset",
+      "description": "Blank neutral cards arranged on a desk for visual metaphor of fact checking, clean paper texture, no readable text, no logos."
+    }
+  ]
+}

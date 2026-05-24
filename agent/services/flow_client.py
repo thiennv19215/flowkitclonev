@@ -276,7 +276,8 @@ class FlowClient:
     async def generate_images(self, prompt: str, project_id: str,
                                aspect_ratio: str = "IMAGE_ASPECT_RATIO_PORTRAIT",
                                user_paygate_tier: str = "PAYGATE_TIER_TWO",
-                               character_media_ids: list[str] = None) -> dict:
+                               character_media_ids: list[str] = None,
+                               image_model_key: str = None) -> dict:
         """Generate image(s).
 
         If character_media_ids is provided, uses edit_image flow (batchGenerateImages
@@ -289,12 +290,14 @@ class FlowClient:
         ts = int(time.time() * 1000)
         ctx = self._client_context(project_id, user_paygate_tier)
 
+        model_key = image_model_key if image_model_key in IMAGE_MODELS else "NANO_BANANA_PRO"
+
         request_item = {
             "clientContext": {**ctx, "sessionId": f";{ts}"},
             "seed": ts % 1000000,
             "structuredPrompt": {"parts": [{"text": prompt}]},
             "imageAspectRatio": aspect_ratio,
-            "imageModelName": IMAGE_MODELS["NANO_BANANA_PRO"],
+            "imageModelName": IMAGE_MODELS[model_key],
         }
 
         # Add character references if provided (edit_image flow)
@@ -372,7 +375,8 @@ class FlowClient:
                               project_id: str, scene_id: str,
                               aspect_ratio: str = "VIDEO_ASPECT_RATIO_PORTRAIT",
                               end_image_media_id: str = None,
-                              user_paygate_tier: str = "PAYGATE_TIER_TWO") -> dict:
+                              user_paygate_tier: str = "PAYGATE_TIER_TWO",
+                              video_model_key: str = None) -> dict:
         """Generate video from start image (i2v).
 
         Two sub-types:
@@ -380,7 +384,7 @@ class FlowClient:
         - start_end_frame_2_video (i2v_fl): startImage + endImage (for scene chaining)
         """
         gen_type = "start_end_frame_2_video" if end_image_media_id else "frame_2_video"
-        model_key = VIDEO_MODELS.get(user_paygate_tier, {}).get(gen_type, {}).get(aspect_ratio)
+        model_key = video_model_key or VIDEO_MODELS.get(user_paygate_tier, {}).get(gen_type, {}).get(aspect_ratio)
 
         if not model_key:
             return {"error": f"No model for tier={user_paygate_tier} type={gen_type} ratio={aspect_ratio}"}

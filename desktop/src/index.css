@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* FlowKit Studio dark palette (per plan) */
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-tertiary: #1a1a25;
+
+    --border: #2a2a35;
+
+    --text-primary: #f0f0f0;
+    --text-secondary: #888888;
+
+    --accent-purple: #7c3aed;
+    --accent-red: #ef4444;
+    --accent-blue: #3b82f6;
+    --accent-green: #22c55e;
+    --accent-orange: #f97316;
+  }
+
+  .light {
+    /* Reserved for future light theme. Currently a near-no-op fallback. */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f7;
+    --bg-tertiary: #ececf1;
+
+    --border: #d4d4d8;
+
+    --text-primary: #0a0a0f;
+    --text-secondary: #525258;
+
+    --accent-purple: #7c3aed;
+    --accent-red: #ef4444;
+    --accent-blue: #3b82f6;
+    --accent-green: #22c55e;
+    --accent-orange: #f97316;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Subtle scrollbar in dark theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    border: 2px solid var(--bg-primary);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--border);
+  }
+}
