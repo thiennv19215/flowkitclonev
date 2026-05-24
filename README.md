@@ -1,8 +1,4 @@
 <p align="center">
-  <img src="docs/images/flowkit_banner.svg" width="720" alt="FLOW KIT" />
-</p>
-
-<p align="center">
   <a href="#license"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"/></a>
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white" alt="Python 3.10+"/>
   <img src="https://img.shields.io/badge/Chrome-MV3-4285F4?logo=googlechrome&logoColor=white" alt="Chrome MV3"/>
@@ -18,32 +14,11 @@
 
 ### ☕ Sponsor this project
 
-<table align="center">
-  <tr>
-    <td align="center" width="50%">
-      <a href="docs/images/sponsor-qr-vn.jpg">
-        <img src="docs/images/sponsor-qr-vn.jpg" alt="Vietnam QR — MoMo / VietQR / napas247" width="240" />
-      </a><br/>
-      <sub>📱 <b>Vietnam</b><br/>MoMo · VietQR · napas247</sub>
-    </td>
-    <td align="center" width="50%">
-      <a href="docs/images/sponsor-qr-binance.png">
-        <img src="docs/images/sponsor-qr-binance.png" alt="Binance Pay QR — Cris Ng" width="240" />
-      </a><br/>
-      <sub>💰 <b>Binance Pay</b><br/>Crypto / cross-border</sub>
-    </td>
-  </tr>
-</table>
-
 <p align="center">
   🌍 <b>International (card):</b>
   <a href="https://ko-fi.com/crisnguyen95">
     <img src="https://img.shields.io/badge/Ko--fi-Buy%20me%20a%20coffee-FF5E5B?logo=kofi&logoColor=white" alt="Ko-fi" />
   </a>
-</p>
-
-<p align="center">
-  <sub><i>(yes — I moved this up here on purpose. Was afraid nobody scrolls past the badges 😅)</i></sub>
 </p>
 
 ---
@@ -54,72 +29,7 @@ Standalone system to generate AI videos via Google Flow API. Uses a Chrome exten
 
 ## Showcase
 
-All outputs below were generated end-to-end by this system — from story concept to final YouTube-ready video with thumbnails, narration, and branding.
-
-### Generated YouTube Thumbnails
-
-<p align="center">
-  <img src="docs/images/thumbnail_hormuz.jpg" width="400" alt="Hormuz Strait naval blockade thumbnail" />
-  <img src="docs/images/thumbnail_f15e_rescue.jpg" width="400" alt="F-15E pilot rescue thumbnail" />
-</p>
-<p align="center">
-  <img src="docs/images/thumbnail_operation_resolve.jpg" width="400" alt="Operation Absolute Resolve thumbnail" />
-  <img src="docs/images/thumbnail_tapalpa.jpg" width="400" alt="Tapalpa cartel operation thumbnail" />
-</p>
-<p align="center">
-  <img src="docs/images/thumbnail_north_korea.jpg" width="400" alt="North Korea defection thumbnail" />
-  <img src="docs/images/thumbnail_iran_israel.jpg" width="400" alt="Iran vs Israel conflict thumbnail" />
-</p>
-
-### Visual Consistency Across Scenes
-
-The reference image system keeps characters consistent across an entire video. Each character is generated once as a reference, then the AI uses that reference in every scene — maintaining the same face, clothing, and features.
-
-**Doctor character** — same face, glasses, white coat across 4 different scenes:
-
-<p align="center">
-  <img src="docs/images/scene_nk_doctor_surgery.jpg" width="200" alt="Doctor in surgery" />
-  <img src="docs/images/scene_nk_doctor_operating.jpg" width="200" alt="Doctor in operating theater" />
-  <img src="docs/images/scene_nk_doctor_interview1.jpg" width="200" alt="Doctor interview — gesturing" />
-  <img src="docs/images/scene_nk_doctor_interview2.jpg" width="200" alt="Doctor interview — smiling" />
-</p>
-
-**Defector character** — same face across ICU, hospital, interview, and Seoul streets:
-
-<p align="center">
-  <img src="docs/images/scene_nk_defector_icu.jpg" width="200" alt="Defector in ICU" />
-  <img src="docs/images/scene_nk_defector_hospital.jpg" width="200" alt="Defector in hospital with nurse" />
-  <img src="docs/images/scene_nk_defector_interview.jpg" width="200" alt="Defector interview" />
-  <img src="docs/images/scene_nk_defector_seoul.jpg" width="200" alt="Defector walking Seoul streets" />
-</p>
-
-<sub>All frames from a single 50-scene project. Both characters maintain consistent appearance across completely different settings and lighting conditions — powered by the reference image system.</sub>
-
-### F-15E Rescue — Full Story Arc (25 scenes)
-
-<p align="center">
-  <img src="docs/images/scene_f15e_map.jpg" width="260" alt="Scene 1: Strategic map overview" />
-  <img src="docs/images/scene_f15e_pilot.jpg" width="260" alt="Scene 3: Pilot walks from F-15E" />
-  <img src="docs/images/scene_f15e_formation.jpg" width="260" alt="Scene 6: F-15E formation refueling" />
-</p>
-<p align="center">
-  <img src="docs/images/scene_f15e_hit.jpg" width="260" alt="Scene 10: F-15E hit at night" />
-  <img src="docs/images/scene_f15e_csar.jpg" width="260" alt="Scene 15: CSAR command center alert" />
-  <img src="docs/images/scene_f15e_survival.jpg" width="260" alt="Scene 20: Pilot surviving in mountains" />
-</p>
-
-<sub>Strategic briefing → pilot departure → formation flight → aircraft hit → CSAR alert → pilot survival.</sub>
-
-### Hormuz Strait — Naval Scenes
-
-<p align="center">
-  <img src="docs/images/scene_hormuz_patrol.jpg" width="400" alt="Iranian patrol boats in formation" />
-  <img src="docs/images/scene_hormuz_bridge.jpg" width="400" alt="US Navy commander on bridge" />
-</p>
-<p align="center">
-  <img src="docs/images/scene_hormuz_ciws.jpg" width="400" alt="CIWS engagement at sea" />
-  <img src="docs/images/scene_hormuz_sunset.jpg" width="400" alt="Warship sailing into sunset" />
-</p>
+All outputs are generated end-to-end by this system — from story concept to final YouTube-ready video with thumbnails, narration, and branding.
 
 ### What the Pipeline Produces
 
@@ -137,14 +47,6 @@ Each project goes through: **story → entities → reference images → scene i
 | YouTube metadata | SEO-optimized title, description, tags, hashtags |
 
 ---
-
-### Chrome Extension — Live Dashboard
-
-<p align="center">
-  <img src="docs/images/extension_screenshot.jpg" width="800" alt="Chrome extension showing request log, video generation progress, and Google Flow interface" />
-</p>
-
-<sub>The Chrome extension runs alongside Google Flow — showing real-time request log (614 total, 328 success), video generation progress, and token status. The Python agent communicates with the extension via WebSocket to automate all API calls.</sub>
 
 ## Architecture
 
